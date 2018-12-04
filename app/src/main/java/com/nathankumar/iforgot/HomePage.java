@@ -1,5 +1,6 @@
 package com.nathankumar.iforgot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.view.View.OnClickListener;
 
 public class HomePage extends AppCompatActivity {
 
@@ -15,17 +18,17 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
+        Button getStartedButton = (Button) findViewById(R.id.getStarted);
+        getStartedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                onButtonClick();
             }
         });
+    }
+
+    public void onButtonClick(){
+        Intent myIntent = new Intent(getBaseContext(), GetStarted.class);
+        startActivity(myIntent);
     }
 
     @Override
