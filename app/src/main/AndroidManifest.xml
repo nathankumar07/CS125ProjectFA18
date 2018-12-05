@@ -22,6 +22,10 @@
         <activity
             android:name=".GetStarted"
             android:label="@string/title_activity_get_started"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewReminders"
+            android:label="@string/title_activity_view_reminders"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

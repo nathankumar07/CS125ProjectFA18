@@ -19,6 +19,7 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Button getStartedButton = (Button) findViewById(R.id.getStarted);
+        Button viewRemindersButton = (Button) findViewById(R.id.viewReminders);
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onButtonClick();
@@ -29,6 +30,11 @@ public class HomePage extends AppCompatActivity {
     public void onButtonClick(){
         Intent myIntent = new Intent(getBaseContext(), GetStarted.class);
         startActivity(myIntent);
+    }
+
+    public void onButtonClickViewReminders() {
+        Intent myIntentTwo = new Intent(getBaseContext(), ViewReminders.class);
+        startActivity(myIntentTwo);
     }
 
     @Override
