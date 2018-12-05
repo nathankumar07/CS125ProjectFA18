@@ -21,10 +21,30 @@ public class GetStarted extends AppCompatActivity {
                 onButtonClick();
             }
         });
+        Button casualButton = (Button) findViewById(R.id.button);
+        casualButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onButtonClickTwo();
+            }
+        });
+        Button urgentButton = (Button) findViewById(R.id.button2);
+        urgentButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onButtonClickThree();
+            }
+        });
     }
 
     public void onButtonClick(){
         Intent myIntent = new Intent(getBaseContext(), HomePage.class);
+        startActivity(myIntent);
+    }
+    public void onButtonClickTwo(){
+        Intent myIntent = new Intent(getBaseContext(), CasualActivity.class);
+        startActivity(myIntent);
+    }
+    public void onButtonClickThree(){
+        Intent myIntent = new Intent(getBaseContext(), UrgentReminder.class);
         startActivity(myIntent);
     }
 
