@@ -30,6 +30,14 @@
         <activity
             android:name=".ViewReminders"
             android:label="@string/title_activity_view_reminders"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UrgentReminder"
+            android:label="@string/title_activity_urgent_reminder"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CasualActivity"
+            android:label="@string/title_activity_casual"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

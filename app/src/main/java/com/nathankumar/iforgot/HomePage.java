@@ -31,15 +31,20 @@ public class HomePage extends AppCompatActivity {
                 onButtonClickTwo();
             }
         });
+        viewRemindersButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onButtonClickViewReminders();
+            }
+        });
     }
 
     public void onButtonClick(){
-        Intent myIntent = new Intent(getBaseContext(), ManageReminders.class);
+        Intent myIntent = new Intent(getBaseContext(), GetStarted.class);
         startActivity(myIntent);
     }
 
     public void onButtonClickTwo(){
-        Intent myIntent = new Intent(getBaseContext(), GetStarted.class);
+        Intent myIntent = new Intent(getBaseContext(), ManageReminders.class);
         startActivity(myIntent);
     }
 
