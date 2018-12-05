@@ -38,6 +38,10 @@
         <activity
             android:name=".CasualActivity"
             android:label="@string/title_activity_casual"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RoutineActivity"
+            android:label="@string/title_activity_routine"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

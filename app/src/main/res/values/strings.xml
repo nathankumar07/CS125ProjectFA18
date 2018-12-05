@@ -95,4 +95,5 @@
     </string>
     <string name="title_activity_urgent_reminder">UrgentReminder</string>
     <string name="title_activity_casual">CasualActivity</string>
+    <string name="title_activity_routine">RoutineActivity</string>
 </resources>

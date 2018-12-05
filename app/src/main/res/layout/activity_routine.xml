@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UrgentReminder">
+    tools:context=".RoutineActivity">
 
     <LinearLayout
         android:id="@+id/vertLayout"
@@ -16,7 +16,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:text="Create Urgent Reminder"
+            android:text="Create New Routine"
             android:textColor="@android:color/holo_red_dark"
             android:textSize="30sp" />
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Reminder Name here" />
+            android:text="Enter Routine Name here" />
 
         <Space
             android:layout_width="match_parent"
@@ -39,47 +39,63 @@
         <EditText
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="230dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Reminder Description here" />
+            android:text="Enter Routine Description here" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="25dp" />
 
-        <EditText
-            android:id="@+id/date"
+        <RadioButton
+            android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            android:text="Enter date here" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="25dp" />
-
-        <EditText
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time"
-            android:text="Enter time here" />
-
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Notifications for this Reminder"
+            android:text="Monday"
             android:textSize="24sp" />
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <RadioButton
+            android:id="@+id/radioButton2"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:srcCompat="@drawable/urgent" />
+            android:layout_height="wrap_content"
+            android:text="Tuesday"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wednesday"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thursday"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friday"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saturday"
+            android:textSize="24sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunday"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/submit"
@@ -88,5 +104,4 @@
             android:text="Submit" />
 
     </LinearLayout>
-
 </android.support.design.widget.CoordinatorLayout>

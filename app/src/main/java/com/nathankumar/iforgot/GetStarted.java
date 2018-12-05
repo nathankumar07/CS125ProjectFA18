@@ -33,6 +33,12 @@ public class GetStarted extends AppCompatActivity {
                 onButtonClickThree();
             }
         });
+        Button routineButton = (Button) findViewById(R.id.button3);
+        routineButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onButtonClickFour();
+            }
+        });
     }
 
     public void onButtonClick(){
@@ -47,5 +53,8 @@ public class GetStarted extends AppCompatActivity {
         Intent myIntent = new Intent(getBaseContext(), UrgentReminder.class);
         startActivity(myIntent);
     }
-
+    public void onButtonClickFour(){
+        Intent myIntent = new Intent(getBaseContext(), RoutineActivity.class);
+        startActivity(myIntent);
+    }
 }

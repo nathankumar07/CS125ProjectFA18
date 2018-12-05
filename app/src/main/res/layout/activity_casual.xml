@@ -68,6 +68,13 @@
             android:inputType="time"
             android:text="Enter time here" />
 
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notifications for this Reminder"
+            android:textSize="24sp" />
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
