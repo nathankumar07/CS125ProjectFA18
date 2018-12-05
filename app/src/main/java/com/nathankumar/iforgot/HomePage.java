@@ -19,14 +19,25 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Button getStartedButton = (Button) findViewById(R.id.getStarted);
+        Button manageRemindersButton = (Button) findViewById(R.id.manageReminders);
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onButtonClick();
             }
         });
+        manageRemindersButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onButtonClickTwo();
+            }
+        });
     }
 
     public void onButtonClick(){
+        Intent myIntent = new Intent(getBaseContext(), ManageReminders.class);
+        startActivity(myIntent);
+    }
+
+    public void onButtonClickTwo(){
         Intent myIntent = new Intent(getBaseContext(), GetStarted.class);
         startActivity(myIntent);
     }
