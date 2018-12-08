@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RoutineActivity">
+    tools:context=".RoutineActivity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:id="@+id/vertLayout"
@@ -18,7 +19,8 @@
             android:layout_height="48dp"
             android:text="Create New Routine"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
@@ -30,7 +32,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Routine Name here" />
+            android:hint="Enter Routine Name here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <Space
             android:layout_width="match_parent"
@@ -39,69 +43,92 @@
         <EditText
             android:id="@+id/desc"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="225dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Enter Routine Description here" />
+            android:hint="Enter your Routine here"
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
-        <Space
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="wrap_content"
+            android:text="Select the Days of the week:"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Monday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tuesday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Wednesday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thursday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Friday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Saturday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <RadioButton
             android:id="@+id/radioButton7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sunday"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="Submit" />
+            android:text="Submit"
+            android:background="@drawable/button_design"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

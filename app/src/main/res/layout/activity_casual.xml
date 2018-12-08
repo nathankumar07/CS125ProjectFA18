@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CasualActivity">
+    tools:context=".CasualActivity"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/casualtwo"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="-50dp"
+        android:rotation="-25"/>
 
     <LinearLayout
         android:id="@+id/vertLayout"
@@ -18,7 +28,8 @@
             android:layout_height="48dp"
             android:text="Create Casual Reminder"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
@@ -30,7 +41,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Reminder Name here" />
+            android:hint="Enter Reminder Name here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <Space
             android:layout_width="match_parent"
@@ -42,7 +55,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Reminder Description here" />
+            android:hint="Enter Reminder Description here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <Space
             android:layout_width="match_parent"
@@ -54,38 +69,30 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="date"
-            android:text="Enter date here" />
+            android:hint="Enter date here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
-        <Space
+        <TimePicker
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
-
-        <EditText
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time"
-            android:text="Enter time here" />
+            android:layout_height="350dp"></TimePicker>
 
         <CheckBox
             android:id="@+id/checkBox5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Notifications for this Reminder"
-            android:textSize="24sp" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/casual" />
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:buttonTint="@color/white"/>
 
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="Submit" />
+            android:layout_height="90dp"
+            android:text="Submit"
+            android:background="@drawable/button_design"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

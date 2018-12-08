@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage">
+    tools:context=".HomePage"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/getStarted"
         android:layout_width="245dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="275dp"
         android:layout_marginBottom="8dp"
         android:text="CREATE REMINDER"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/viewReminders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        android:background="@drawable/button_design_two"/>
 
     <Button
         android:id="@+id/viewReminders"
@@ -27,12 +29,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="Manage Reminders"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/manageReminders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/getStarted" />
+        app:layout_constraintTop_toBottomOf="@+id/getStarted"
+        android:background="@drawable/button_design_two"/>
 
     <Button
         android:id="@+id/manageReminders"
@@ -41,11 +44,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="150dp"
         android:text="View Reminders"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewReminders" />
+        app:layout_constraintTop_toBottomOf="@+id/viewReminders"
+        android:background="@drawable/button_design_two"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -58,4 +62,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
 </android.support.constraint.ConstraintLayout>

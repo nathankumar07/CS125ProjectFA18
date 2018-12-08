@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UrgentReminder">
+    tools:context=".UrgentReminder"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/urgent"
+        android:layout_marginLeft="305dp"/>
 
     <LinearLayout
         android:id="@+id/vertLayout"
@@ -30,7 +38,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Reminder Name here" />
+            android:hint="Enter Reminder Name here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <Space
             android:layout_width="match_parent"
@@ -42,7 +52,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Enter Reminder Description here" />
+            android:hint="Enter Reminder Description here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <Space
             android:layout_width="match_parent"
@@ -54,38 +66,29 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="date"
-            android:text="Enter date here" />
+            android:hint="Enter date here"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
-        <Space
+        <TimePicker
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
-
-        <EditText
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="time"
-            android:text="Enter time here" />
+            android:layout_height="350dp"></TimePicker>
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Notifications for this Reminder"
-            android:textSize="24sp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:srcCompat="@drawable/urgent" />
+            android:textSize="24sp"
+            android:buttonTint="@color/white"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="Submit" />
+            android:text="Submit"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
