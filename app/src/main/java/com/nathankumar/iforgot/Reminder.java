@@ -7,5 +7,13 @@ public class Reminder {
     private int type;
     private String name;
     private String description;
-    private Date taskDate;
+    private String taskDate;
+
+    public Reminder(int type, String name, String description, String taskDate) {
+        this.type = type;
+        this.name = name;
+        this.description = description;
+        this.taskDate = taskDate;
+    }
+
 }
