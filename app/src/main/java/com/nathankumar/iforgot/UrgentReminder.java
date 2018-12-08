@@ -9,10 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class UrgentReminder extends AppCompatActivity {
 
+
+public class UrgentReminder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +27,20 @@ public class UrgentReminder extends AppCompatActivity {
         });
     }
     public void onButtonClick(){
+        EditText edit1 = (EditText)findViewById(R.id.name);
+        EditText edit2 = (EditText)findViewById(R.id.desc);
+        EditText edit3 = (EditText)findViewById(R.id.date);
+        createNewUrgentReminder(edit1.getText().toString(), edit2.getText().toString(), edit3.getText().toString());
         Context context = getApplicationContext();
         CharSequence text = "Created new urgent reminder!";
         int duration = Toast.LENGTH_LONG;
-
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
         Intent myIntent = new Intent(getBaseContext(), ViewReminders.class);
         startActivity(myIntent);
+    }
+    public void createNewUrgentReminder(String name, String desc, String date) {
+        Reminder newUrgentReminder = new Reminder(0, name, desc, date);
+        //reminders.add(newUrgentReminder);
     }
 }
