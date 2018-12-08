@@ -49,14 +49,14 @@ public class StartupActivity extends AppCompatActivity {
         });
     }
     public void onButtonClick(){
-        List<Reminder> reminders = new ArrayList<>();
+        ArrayList<Reminder> reminders = new ArrayList<>();
         saveData(reminders);
 
         Intent myIntent = new Intent(getBaseContext(), HomePage.class);
         startActivity(myIntent);
     }
 
-    public void saveData(List<Reminder> input) {
+    public void saveData(ArrayList<Reminder> input) {
         SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
@@ -65,7 +65,7 @@ public class StartupActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    public List<Reminder> loadData() {
+    public ArrayList<Reminder> loadData() {
         SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = preferences.getString("reminders", null);
