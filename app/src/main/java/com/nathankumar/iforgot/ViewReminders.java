@@ -22,6 +22,7 @@ public class ViewReminders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reminders);
+        createRecyclerViews();
         Button backButton = (Button) findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -30,9 +31,9 @@ public class ViewReminders extends AppCompatActivity {
         });
     }
     public void createRecyclerViews() {
-        ListView UR_ListView = (ListView) findViewById(R.id.UG_list);
-        ListView CR_RecyclerView = (ListView) findViewById(R.id.CR_list);
-        ListView CR_RecyclerView2 = (ListView) findViewById(R.id.CR_list2);
+        ListView UR_ListView = (ListView) findViewById(R.id.listone);
+        ListView CR_RecyclerView = (ListView) findViewById(R.id.listtwo);
+        ListView CR_RecyclerView2 = (ListView) findViewById(R.id.listthree);
         ArrayList<Reminder> urgentReminder = getUrgentReminder();
         ArrayList<Reminder> casualReminder = getCasualReminder();
         ArrayList<Reminder> routineReminder = getRoutineReminder();

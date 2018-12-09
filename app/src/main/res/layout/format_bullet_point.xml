@@ -2,4 +2,4 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:drawableLeft="@drawable/button_design"/>
+    android:drawableLeft="@drawable/button_design_two"/>

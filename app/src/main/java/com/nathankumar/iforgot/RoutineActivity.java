@@ -2,6 +2,7 @@ package com.nathankumar.iforgot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RoutineActivity extends AppCompatActivity {
     public StartupActivity act = new StartupActivity();
@@ -31,8 +37,7 @@ public class RoutineActivity extends AppCompatActivity {
     public void onButtonClick(){
         EditText edit1 = (EditText)findViewById(R.id.name);
         EditText edit2 = (EditText)findViewById(R.id.desc);
-        EditText edit3 = (EditText)findViewById(R.id.date);
-        createNewRoutineReminder(edit1.getText().toString(), edit2.getText().toString(), edit3.getText().toString());
+        createNewRoutineReminder(edit1.getText().toString(), edit2.getText().toString(), "12/09/2018");
         Context context = getApplicationContext();
         CharSequence text = "Created new routine!";
         int duration = Toast.LENGTH_LONG;
@@ -43,10 +48,33 @@ public class RoutineActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
     public void createNewRoutineReminder(String name, String desc, String date) {
-        ArrayList<Reminder> temp = act.loadData();
+        ArrayList<Reminder> temp = loadData();
         Reminder newRoutineReminder = new Reminder(2, name, desc, date);
         temp.add(newRoutineReminder);
-        act.saveData(temp);
+        saveData(temp);
+    }
+
+    public void saveData(List<Reminder> input) {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(input);
+        //writeToFile(json, StartupActivity.this);
+        editor.putString("reminders", json);
+        editor.apply();
+    }
+
+    public ArrayList<Reminder> loadData() {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("reminders", null);
+        //readFromFile(StartupActivity.this);
+        Type type = new TypeToken<ArrayList<Reminder>>() {}.getType();
+        ArrayList<Reminder> temp =  gson.fromJson(json, type);
+        if (temp == null) {
+            return new ArrayList<Reminder>();
+        }
+        return temp;
     }
 
 }

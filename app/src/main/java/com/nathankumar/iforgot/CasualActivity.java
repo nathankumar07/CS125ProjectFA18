@@ -2,6 +2,7 @@ package com.nathankumar.iforgot;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CasualActivity extends AppCompatActivity {
     public StartupActivity act = new StartupActivity();
@@ -42,11 +48,34 @@ public class CasualActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
     public void createNewCasualReminder(String name, String desc, String date) {
-        ArrayList<Reminder> temp = act.loadData();
+        ArrayList<Reminder> temp = loadData();
         Reminder newCasualReminder = new Reminder(1, name, desc, date);
         temp.add(newCasualReminder);
-        act.saveData(temp);
+        saveData(temp);
         //reminder.add(newCasualReminder);
+    }
+
+    public void saveData(List<Reminder> input) {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(input);
+        //writeToFile(json, StartupActivity.this);
+        editor.putString("reminders", json);
+        editor.apply();
+    }
+
+    public ArrayList<Reminder> loadData() {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("reminders", null);
+        //readFromFile(StartupActivity.this);
+        Type type = new TypeToken<ArrayList<Reminder>>() {}.getType();
+        ArrayList<Reminder> temp =  gson.fromJson(json, type);
+        if (temp == null) {
+            return new ArrayList<Reminder>();
+        }
+        return temp;
     }
 
 
