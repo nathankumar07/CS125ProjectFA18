@@ -2,19 +2,15 @@ package com.nathankumar.iforgot;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import java.util.ArrayList;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class ViewReminders extends AppCompatActivity {
     public StartupActivity act = new StartupActivity();
@@ -22,24 +18,83 @@ public class ViewReminders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reminders);
-        createRecyclerViews();
+        createListViews();
+        final EditText UR_text = (EditText)findViewById(R.id.UR_textView);
+        final EditText CR_text = (EditText)findViewById(R.id.CR_TextView);
+        final EditText CR_text2 = (EditText)findViewById(R.id.CR_TextView2);
         Button backButton = (Button) findViewById(R.id.back);
+        Button Done1 = (Button) findViewById(R.id.Done1);
+        Button Done2 = (Button) findViewById(R.id.Done2);
+        Button Done3 = (Button) findViewById(R.id.Done3);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onButtonClick();
             }
         });
+        Done1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (UR_text.getText().toString().equals("")) {
+                    updateList(UR_text.getText().toString());
+                } else {
+                    Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+                    noResponseNoted.show();
+                }
+            }
+        });
+        Done2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (CR_text.getText().toString().equals("")) {
+                    updateList(CR_text.getText().toString());
+                } else {
+                    Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+                    noResponseNoted.show();
+                }
+            }
+        });
+        Done3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (CR_text2.getText().toString().equals("")) {
+                    updateList(CR_text2.getText().toString());
+                } else {
+                    Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+                    noResponseNoted.show();
+                }
+            }
+        });
     }
-    public void createRecyclerViews() {
+    public void updateList(String text) {
+        boolean doesExist = false;
+        ArrayList<Reminder> temp = act.loadData();
+        for (Reminder r : temp) {
+            if (r.getName().equals(text)) {
+                doesExist = true;
+                temp.remove(r);
+                break;
+            }
+        }
+        if (doesExist) {
+            act.saveData(temp);
+        } else {
+            Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+            noResponseNoted.show();
+        }
+    }
+    public void createListViews() {
         ListView UR_ListView = (ListView) findViewById(R.id.listone);
         ListView CR_RecyclerView = (ListView) findViewById(R.id.listtwo);
         ListView CR_RecyclerView2 = (ListView) findViewById(R.id.listthree);
         ArrayList<String> urgentReminder = getUrgentReminder();
         ArrayList<String> casualReminder = getCasualReminder();
         ArrayList<String> routineReminder = getRoutineReminder();
-        setListViews(urgentReminder, UR_ListView);
-        setListViews(casualReminder, CR_RecyclerView);
-        setListViews(routineReminder, CR_RecyclerView2);
+        if (urgentReminder != null) {
+            setListViews(urgentReminder, UR_ListView);
+        }
+        if (casualReminder != null) {
+            setListViews(casualReminder, CR_RecyclerView);
+        }
+        if (routineReminder != null) {
+            setListViews(routineReminder, CR_RecyclerView2);
+        }
     }
     public void setListViews(ArrayList<String> reminder, ListView display) {
         ListAdapter current_list = new ArrayAdapter<String>(this, R.layout.format_bullet_point, reminder);
