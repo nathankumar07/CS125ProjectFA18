@@ -12,9 +12,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import com.nathankumar.iforgot.StartupActivity;
 
 
 public class UrgentReminder extends AppCompatActivity {
+    public StartupActivity act = new StartupActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +45,10 @@ public class UrgentReminder extends AppCompatActivity {
         startActivity(myIntent);
     }
     public void createNewUrgentReminder(String name, String desc, String date) {
+        ArrayList<Reminder> temp = act.loadData();
         Reminder newUrgentReminder = new Reminder(0, name, desc, date);
+        temp.add(newUrgentReminder);
+        act.saveData(temp);
         //reminders.add(newUrgentReminder);
     }
 }

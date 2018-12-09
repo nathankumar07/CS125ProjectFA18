@@ -12,8 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RoutineActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class RoutineActivity extends AppCompatActivity {
+    public StartupActivity act = new StartupActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +43,10 @@ public class RoutineActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
     public void createNewRoutineReminder(String name, String desc, String date) {
-        Reminder newCasualReminder = new Reminder(2, name, desc, date);
-        //reminder.add(newCasualReminder);
+        ArrayList<Reminder> temp = act.loadData();
+        Reminder newRoutineReminder = new Reminder(2, name, desc, date);
+        temp.add(newRoutineReminder);
+        act.saveData(temp);
     }
 
 }

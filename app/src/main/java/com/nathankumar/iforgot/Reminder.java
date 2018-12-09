@@ -16,4 +16,10 @@ public class Reminder {
         this.taskDate = taskDate;
     }
 
+    public int getType() {
+        return this.type;
+    }
+    public String getName() {
+        return name;
+    }
 }
