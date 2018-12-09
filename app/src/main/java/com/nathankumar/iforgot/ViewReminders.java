@@ -34,43 +34,43 @@ public class ViewReminders extends AppCompatActivity {
         ListView UR_ListView = (ListView) findViewById(R.id.listone);
         ListView CR_RecyclerView = (ListView) findViewById(R.id.listtwo);
         ListView CR_RecyclerView2 = (ListView) findViewById(R.id.listthree);
-        ArrayList<Reminder> urgentReminder = getUrgentReminder();
-        ArrayList<Reminder> casualReminder = getCasualReminder();
-        ArrayList<Reminder> routineReminder = getRoutineReminder();
+        ArrayList<String> urgentReminder = getUrgentReminder();
+        ArrayList<String> casualReminder = getCasualReminder();
+        ArrayList<String> routineReminder = getRoutineReminder();
         setListViews(urgentReminder, UR_ListView);
         setListViews(casualReminder, CR_RecyclerView);
         setListViews(routineReminder, CR_RecyclerView2);
     }
-    public void setListViews(ArrayList<Reminder> reminder, ListView display) {
-        ListAdapter current_list = new ArrayAdapter<Reminder>(this, R.layout.format_bullet_point, reminder);
+    public void setListViews(ArrayList<String> reminder, ListView display) {
+        ListAdapter current_list = new ArrayAdapter<String>(this, R.layout.format_bullet_point, reminder);
         display.setAdapter(current_list);
     }
-    public ArrayList<Reminder> getUrgentReminder() {
-        ArrayList<Reminder> list_UG = new ArrayList<>();
+    public ArrayList<String> getUrgentReminder() {
+        ArrayList<String> list_UG = new ArrayList<>();
         ArrayList<Reminder> temp = act.loadData();
         for (Reminder r : temp) {
             if (r.getType() == 0) {
-                list_UG.add(r);
+                list_UG.add(r.getName() + ": " + r.getDescription());
             }
         }
         return list_UG;
     }
-    public ArrayList<Reminder> getCasualReminder() {
-        ArrayList<Reminder> list_CR = new ArrayList<>();
+    public ArrayList<String> getCasualReminder() {
+        ArrayList<String> list_CR = new ArrayList<>();
         ArrayList<Reminder> temp = act.loadData();
         for (Reminder r : temp) {
             if (r.getType() == 1) {
-                list_CR.add(r);
+                list_CR.add(r.getName() + ": " + r.getDescription());
             }
         }
         return list_CR;
     }
-    public ArrayList<Reminder> getRoutineReminder() {
-        ArrayList<Reminder> list_CR = new ArrayList<>();
+    public ArrayList<String> getRoutineReminder() {
+        ArrayList<String> list_CR = new ArrayList<>();
         ArrayList<Reminder> temp = act.loadData();
         for (Reminder r : temp) {
             if (r.getType() == 2) {
-                list_CR.add(r);
+                list_CR.add(r.getName() + ": " + r.getDescription());
             }
         }
         return list_CR;

@@ -20,6 +20,9 @@ public class Reminder {
         return this.type;
     }
     public String getName() {
-        return name;
+        return this.name;
+    }
+    public String getDescription() {
+        return this.description;
     }
 }
