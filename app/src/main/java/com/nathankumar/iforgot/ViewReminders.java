@@ -1,16 +1,24 @@
 package com.nathankumar.iforgot;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
+
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class ViewReminders extends AppCompatActivity {
     public StartupActivity act = new StartupActivity();
@@ -36,7 +44,7 @@ public class ViewReminders extends AppCompatActivity {
                 if (UR_text.getText().toString().equals("")) {
                     updateList(UR_text.getText().toString());
                 } else {
-                    Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+                    Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
                     noResponseNoted.show();
                 }
             }
@@ -46,7 +54,7 @@ public class ViewReminders extends AppCompatActivity {
                 if (CR_text.getText().toString().equals("")) {
                     updateList(CR_text.getText().toString());
                 } else {
-                    Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+                    Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
                     noResponseNoted.show();
                 }
             }
@@ -56,7 +64,7 @@ public class ViewReminders extends AppCompatActivity {
                 if (CR_text2.getText().toString().equals("")) {
                     updateList(CR_text2.getText().toString());
                 } else {
-                    Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+                    Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
                     noResponseNoted.show();
                 }
             }
@@ -75,7 +83,7 @@ public class ViewReminders extends AppCompatActivity {
         if (doesExist) {
             act.saveData(temp);
         } else {
-            Toast noResponseNoted = new Toast.makeText(ViewReminders.this, "Please input a valid activity", Toast.LENGTH_SHORT);
+            Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
             noResponseNoted.show();
         }
     }
@@ -102,7 +110,7 @@ public class ViewReminders extends AppCompatActivity {
     }
     public ArrayList<String> getUrgentReminder() {
         ArrayList<String> list_UG = new ArrayList<>();
-        ArrayList<Reminder> temp = act.loadData();
+        ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getType() == 0) {
                 list_UG.add(r.getName() + ": " + r.getDescription());
@@ -112,7 +120,7 @@ public class ViewReminders extends AppCompatActivity {
     }
     public ArrayList<String> getCasualReminder() {
         ArrayList<String> list_CR = new ArrayList<>();
-        ArrayList<Reminder> temp = act.loadData();
+        ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getType() == 1) {
                 list_CR.add(r.getName() + ": " + r.getDescription());
@@ -122,7 +130,7 @@ public class ViewReminders extends AppCompatActivity {
     }
     public ArrayList<String> getRoutineReminder() {
         ArrayList<String> list_CR = new ArrayList<>();
-        ArrayList<Reminder> temp = act.loadData();
+        ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getType() == 2) {
                 list_CR.add(r.getName() + ": " + r.getDescription());
@@ -134,5 +142,28 @@ public class ViewReminders extends AppCompatActivity {
     public void onButtonClick(){
         Intent myIntent = new Intent(getBaseContext(), HomePage.class);
         startActivity(myIntent);
+    }
+
+    public void saveData(List<Reminder> input) {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(input);
+        //writeToFile(json, StartupActivity.this);
+        editor.putString("reminders", json);
+        editor.apply();
+    }
+
+    public ArrayList<Reminder> loadData() {
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("reminders", "");
+        //readFromFile(StartupActivity.this);
+        Type type = new TypeToken<ArrayList<Reminder>>() {}.getType();
+        ArrayList<Reminder> temp =  gson.fromJson(json, type);
+        if (temp == null) {
+            return new ArrayList<Reminder>();
+        }
+        return temp;
     }
 }

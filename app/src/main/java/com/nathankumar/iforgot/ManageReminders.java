@@ -31,7 +31,8 @@ public class ManageReminders extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String date = month + "/" + dayOfMonth + "/" + year;
+                int newMonth = month + 1;
+                String date = newMonth + "/" + dayOfMonth + "/" + year;
                 viewthing.setText("Viewing Reminders For: " + date);
             }
         });

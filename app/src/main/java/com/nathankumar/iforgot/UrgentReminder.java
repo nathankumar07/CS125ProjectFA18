@@ -70,7 +70,7 @@ public class UrgentReminder extends AppCompatActivity {
     public ArrayList<Reminder> loadData() {
         SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = preferences.getString("reminders", null);
+        String json = preferences.getString("reminders", "");
         //readFromFile(StartupActivity.this);
         Type type = new TypeToken<ArrayList<Reminder>>() {}.getType();
         ArrayList<Reminder> temp =  gson.fromJson(json, type);
