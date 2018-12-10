@@ -72,7 +72,7 @@ public class ViewReminders extends AppCompatActivity {
     }
     public void updateList(String text) {
         boolean doesExist = false;
-        ArrayList<Reminder> temp = act.loadData();
+        ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getName().equals(text)) {
                 doesExist = true;
@@ -81,7 +81,7 @@ public class ViewReminders extends AppCompatActivity {
             }
         }
         if (doesExist) {
-            act.saveData(temp);
+            saveData(temp);
         } else {
             Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
             noResponseNoted.show();
