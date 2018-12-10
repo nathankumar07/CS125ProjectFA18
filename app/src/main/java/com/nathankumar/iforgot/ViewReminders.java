@@ -79,7 +79,7 @@ public class ViewReminders extends AppCompatActivity {
         boolean doesExist = false;
         ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
-            if (r.getName().equals(text)) {
+            if (r.getName().equalsIgnoreCase(text)) {
                 doesExist = true;
                 temp.remove(r);
                 break;

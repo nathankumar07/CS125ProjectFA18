@@ -77,15 +77,6 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"></TimePicker>
 
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Notifications for this Reminder"
-            android:textSize="24sp"
-            android:textColor="@color/white"
-            android:buttonTint="@color/white"/>
-
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"

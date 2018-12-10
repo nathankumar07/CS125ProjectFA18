@@ -23,9 +23,9 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR = 11);
-        calendar.set(Calendar.MINUTE, 17);
-        calendar.set(Calendar.SECOND = 40);
+        calendar.set(Calendar.HOUR, 9);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
         Intent newIntent = new Intent(getApplicationContext(),NotifyClass.class);
         PendingIntent PD = PendingIntent.getBroadcast(getApplicationContext(),100,newIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager AM = (AlarmManager) getSystemService(ALARM_SERVICE);

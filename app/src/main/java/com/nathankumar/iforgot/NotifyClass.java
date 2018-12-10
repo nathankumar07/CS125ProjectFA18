@@ -17,6 +17,7 @@ import java.util.List;
 import static android.content.Context.MODE_PRIVATE;
 
 public class NotifyClass extends BroadcastReceiver {
+    UrgentReminder act = new UrgentReminder();
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
@@ -31,7 +32,7 @@ public class NotifyClass extends BroadcastReceiver {
 
     }
     public String getText() {
-        ArrayList<Reminder> reminders = loadData();
+        ArrayList<Reminder> reminders = act.loadData();
         boolean isThereData = false;
         String text = "";
         for (Reminder r : reminders) {
@@ -46,27 +47,5 @@ public class NotifyClass extends BroadcastReceiver {
             text = "no reminders for today!";
             return text;
         }
-    }
-    public void saveData(List<Reminder> input) {
-        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(input);
-        //writeToFile(json, StartupActivity.this);
-        editor.putString("reminders", json);
-        editor.apply();
-    }
-
-    public ArrayList<Reminder> loadData() {
-        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = preferences.getString("reminders", "");
-        //readFromFile(StartupActivity.this);
-        Type type = new TypeToken<ArrayList<Reminder>>() {}.getType();
-        ArrayList<Reminder> temp =  gson.fromJson(json, type);
-        if (temp == null) {
-            return new ArrayList<Reminder>();
-        }
-        return temp;
     }
 }
