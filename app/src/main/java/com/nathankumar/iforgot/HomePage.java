@@ -1,5 +1,7 @@
 package com.nathankumar.iforgot;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,12 +14,23 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 
+import java.util.Calendar;
+
 public class HomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR = 11);
+        calendar.set(Calendar.MINUTE, 17);
+        calendar.set(Calendar.SECOND = 40);
+        Intent newIntent = new Intent(getApplicationContext(),NotifyClass.class);
+        PendingIntent PD = PendingIntent.getBroadcast(getApplicationContext(),100,newIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager AM = (AlarmManager) getSystemService(ALARM_SERVICE);
+        AM.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AM.INTERVAL_DAY, PD);
+
         Button getStartedButton = (Button) findViewById(R.id.getStarted);
         Button manageRemindersButton = (Button) findViewById(R.id.manageReminders);
         Button viewRemindersButton = (Button) findViewById(R.id.viewReminders);
