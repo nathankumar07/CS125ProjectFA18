@@ -71,6 +71,7 @@
             android:textColor="@color/white"/>
 
         <TimePicker
+            android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="350dp"></TimePicker>
 

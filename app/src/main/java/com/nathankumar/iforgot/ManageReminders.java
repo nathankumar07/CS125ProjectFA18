@@ -66,7 +66,7 @@ public class ManageReminders extends AppCompatActivity {
         ArrayList<Reminder> data = loadData();
         for (Reminder r : data) {
             if (r.getDate().equals(date)) {
-                temp.add(r.getName() + ": " + r.getDescription());
+                temp.add(r.getName() + " - " + r.getDescription() + " - " + r.getTime());
             }
         }
         return temp;

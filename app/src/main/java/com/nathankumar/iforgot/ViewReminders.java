@@ -118,7 +118,7 @@ public class ViewReminders extends AppCompatActivity {
         ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getType() == 0) {
-                list_UG.add(r.getName() + ": " + r.getDescription());
+                list_UG.add(r.getName() + " - " + r.getDescription() + " - " + r.getDate() + " - " + r.getTime());
             }
         }
         return list_UG;
@@ -128,7 +128,7 @@ public class ViewReminders extends AppCompatActivity {
         ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getType() == 1) {
-                list_CR.add(r.getName() + ": " + r.getDescription());
+                list_CR.add(r.getName() + " - " + r.getDescription() + " - " + r.getDate() + " - " + r.getTime());
             }
         }
         return list_CR;
@@ -138,7 +138,7 @@ public class ViewReminders extends AppCompatActivity {
         ArrayList<Reminder> temp = loadData();
         for (Reminder r : temp) {
             if (r.getType() == 2) {
-                list_CR.add(r.getName() + ": " + r.getDescription());
+                list_CR.add(r.getName() + " - " + r.getDescription() + ": " + r.getDays());
             }
         }
         return list_CR;
