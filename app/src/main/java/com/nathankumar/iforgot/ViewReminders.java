@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import java.lang.reflect.Type;
@@ -26,6 +27,7 @@ public class ViewReminders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reminders);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         createListViews();
         final EditText UR_text = (EditText)findViewById(R.id.UR_textView);
         final EditText CR_text = (EditText)findViewById(R.id.CR_TextView);
@@ -41,8 +43,9 @@ public class ViewReminders extends AppCompatActivity {
         });
         Done1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (UR_text.getText().toString().equals("")) {
+                if (!(UR_text.getText().toString().equals(""))) {
                     updateList(UR_text.getText().toString());
+                    createListViews();
                 } else {
                     Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
                     noResponseNoted.show();
@@ -51,8 +54,9 @@ public class ViewReminders extends AppCompatActivity {
         });
         Done2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (CR_text.getText().toString().equals("")) {
+                if (!(CR_text.getText().toString().equals(""))) {
                     updateList(CR_text.getText().toString());
+                    createListViews();
                 } else {
                     Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
                     noResponseNoted.show();
@@ -61,8 +65,9 @@ public class ViewReminders extends AppCompatActivity {
         });
         Done3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (CR_text2.getText().toString().equals("")) {
+                if (!(CR_text2.getText().toString().equals(""))) {
                     updateList(CR_text2.getText().toString());
+                    createListViews();
                 } else {
                     Toast noResponseNoted = Toast.makeText(getApplicationContext(), "Please input a valid activity", Toast.LENGTH_SHORT);
                     noResponseNoted.show();

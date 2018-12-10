@@ -25,4 +25,7 @@ public class Reminder {
     public String getDescription() {
         return this.description;
     }
+    public String getDate() {
+        return this.taskDate;
+    }
 }
