@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,14 +45,22 @@ public class UrgentReminder extends AppCompatActivity {
         EditText edit3 = (EditText)findViewById(R.id.date);
         TimePicker pickTime = (TimePicker) findViewById(R.id.time);
         String tempTime = pickTime.getCurrentHour() + ":" + pickTime.getCurrentMinute();
-        createNewUrgentReminder(edit1.getText().toString(), edit2.getText().toString(), edit3.getText().toString(), tempTime);
-        Context context = getApplicationContext();
-        CharSequence text = "Created new urgent reminder!";
-        int duration = Toast.LENGTH_LONG;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        Intent myIntent = new Intent(getBaseContext(), ViewReminders.class);
-        startActivity(myIntent);
+        if (!(edit1.getText().toString() == null || edit2.getText().toString() == null || edit3.getText().toString() == null || !(isDateValid(edit3.getText().toString())))) {
+            createNewUrgentReminder(edit1.getText().toString(), edit2.getText().toString(), edit3.getText().toString(), tempTime);
+            Context context = getApplicationContext();
+            CharSequence text = "Created new urgent reminder!";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            Intent myIntent = new Intent(getBaseContext(), ViewReminders.class);
+            startActivity(myIntent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill out all necessary fields and a valid date format(MM/DD/YYYY)";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
     public void createNewUrgentReminder(String name, String desc, String date, String time) {
         ArrayList<Reminder> temp = loadData();
@@ -81,5 +91,16 @@ public class UrgentReminder extends AppCompatActivity {
             return new ArrayList<Reminder>();
         }
         return temp;
+    }
+
+    public static boolean isDateValid(String input) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(input.trim());
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
     }
 }

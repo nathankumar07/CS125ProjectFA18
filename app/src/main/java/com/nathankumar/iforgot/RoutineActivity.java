@@ -46,15 +46,22 @@ public class RoutineActivity extends AppCompatActivity {
         RadioButton button5 = (RadioButton) findViewById(R.id.radioButton5);
         RadioButton button6 = (RadioButton) findViewById(R.id.radioButton6);
         RadioButton button7 = (RadioButton) findViewById(R.id.radioButton7);
-        createNewRoutineReminder(edit1.getText().toString(), edit2.getText().toString(), "", "", button1.isChecked(), button2.isChecked(), button3.isChecked(), button4.isChecked(), button5.isChecked(), button6.isChecked(), button7.isChecked());
-        Context context = getApplicationContext();
-        CharSequence text = "Created new routine!";
-        int duration = Toast.LENGTH_LONG;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        Intent myIntent = new Intent(getBaseContext(), ViewReminders.class);
-        startActivity(myIntent);
+        if (!(edit1.getText().toString() == null || edit2.getText().toString() == null || edit1.getText().toString().equals("") || edit2.getText().toString().equals(""))) {
+            createNewRoutineReminder(edit1.getText().toString(), edit2.getText().toString(), "", "", button1.isChecked(), button2.isChecked(), button3.isChecked(), button4.isChecked(), button5.isChecked(), button6.isChecked(), button7.isChecked());
+            Context context = getApplicationContext();
+            CharSequence text = "Created new routine!";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            Intent myIntent = new Intent(getBaseContext(), ViewReminders.class);
+            startActivity(myIntent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "Please fill out all necessary fields";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
     public void createNewRoutineReminder(String name, String desc, String date, String time, boolean mon, boolean tues, boolean weds, boolean thurs, boolean fri, boolean sat, boolean sun) {
         ArrayList<Reminder> temp = loadData();
